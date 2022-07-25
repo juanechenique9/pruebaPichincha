@@ -3,33 +3,32 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+  let component: AppComponent;
+
+  beforeEach(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  it('should receiveDataPokemon ', () => {
+    const data = {
+      attack: 83,
+      defense: 84,
+      hp: 10,
+      id: 1602,
+      id_author: 1,
+      image: 'https://technical-test-nttdata-leobar37.vercel.app',
+      name: 'gh',
+      type: 'Fuego',
+    };
+
+    component.receiveDataPokemon(data);
+    expect(component).toBeDefined();
   });
 
-  it(`should have as title 'pruebaPokemon'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('pruebaPokemon');
-  });
+  it('should updateListPokemon ', () => {
+    component.updateListPokemon(true)
+    expect(component).toBeTruthy;
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('pruebaPokemon app is running!');
-  });
+  })
 });

@@ -12,9 +12,9 @@ import {
   SimpleChanges,
   ViewChildren,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Ipokemon } from 'src/app/model/pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from '../../services/pokemon.service';
 
 @Component({
   selector: 'app-add-pokemon',
@@ -50,6 +50,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {}
 
+  // Metodo que inicializa el formulario
+
   private formPokemon(): void {
     this.pokemonForm = this.fb.group({
       id: [],
@@ -63,10 +65,11 @@ export class AddPokemonComponent implements OnInit, OnChanges {
     });
   }
 
+  // Metodo para detectar los cambios de los Input
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['onPokemon']?.currentValue) {
       this.showAddPokemon = true;
-      
     }
     if (changes['dataPokemon']?.currentValue) {
       this.pokemonForm.setValue({
@@ -92,6 +95,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
     });
   }
 
+  // Metodo para controlar el rango del slider de ataque pokemon
+
   attackPokemon(event?: any, attack?: any) {
     const value = event?.target.value;
     this.valueAttack = value ? value : attack;
@@ -107,6 +112,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
         '%, #efefef 100%)'
     );
   }
+
+  // Metodo para controlar el rango del slider de la defensa pokemon
 
   defensePokemon(event?: any, defense?: any) {
     const value = event?.target.value;
@@ -124,8 +131,9 @@ export class AddPokemonComponent implements OnInit, OnChanges {
     );
   }
 
+  // Metodo para agregar y editar pokemon
+
   onCreatePokemon() {
-    debugger;
     const data = this.pokemonForm.getRawValue();
     let pokemonToSave: Ipokemon = {
       id: data.id,
@@ -141,7 +149,6 @@ export class AddPokemonComponent implements OnInit, OnChanges {
       this.pokemonService
         .updatePokemon(pokemonToSave)
         .subscribe((response: Ipokemon) => {
-          console.log('respuesta servicio actualizar', response);
           this.pokemonForm.reset();
           this.valueAttack = 50;
           this.valuedefense = 50;
@@ -152,7 +159,6 @@ export class AddPokemonComponent implements OnInit, OnChanges {
       this.pokemonService
         .addPokemon(pokemonToSave)
         .subscribe((response: Ipokemon) => {
-          console.log('respuesta servicio', response);
           this.pokemonForm.reset();
           this.valueAttack = 50;
           this.valuedefense = 50;
@@ -161,6 +167,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
         });
     }
   }
+
+  // Metodo para deshabilitar o habilitar el boton de guardar
 
   validFormPoke() {
     if (
@@ -175,9 +183,11 @@ export class AddPokemonComponent implements OnInit, OnChanges {
     }
   }
 
+  // Metodo para cerrar y limpiar campo del formulario.
+
   closePokemon() {
     this.showAddPokemon = false;
-    this.formPokemon()
+    this.formPokemon();
     this.valueAttack = 50;
     this.valuedefense = 50;
   }
