@@ -32,6 +32,8 @@ export class SearchPokemonComponent implements OnInit {
 
   // Metodo que inicializa el formulario
 
+  // Method that initializes the form
+
   private formSearchPokemon(): void {
     this.pokemonSearch = this.fb.group({
       nameSearch: new FormControl(''),
@@ -39,6 +41,8 @@ export class SearchPokemonComponent implements OnInit {
   }
 
   // Metodo para traer listado de pokemon
+
+  // Method to bring list of pokemon
 
   allPokemon() {
     this.pokemonService.getPokemon().subscribe((result) => {
@@ -48,6 +52,8 @@ export class SearchPokemonComponent implements OnInit {
   }
 
   // Metodo para eliminar pokemon
+  
+  // method to delete pokemon
 
   onDeletePokemon(pokemon: Ipokemon) {
     this.pokemonService.deletePokemon(pokemon).subscribe((response) => {
@@ -56,13 +62,17 @@ export class SearchPokemonComponent implements OnInit {
     });
   }
 
-  // Metodo para enviar datos de pokemon editar
+  // Metodo para enviar datos de pokemon a editar
+
+  // Method to send pokemon data to edit
 
   onUpdatePokemon(pokemon: Ipokemon) {
     this.sendDataPokemon.emit(pokemon);
   }
 
   // Metodo para buscar pokemon por el nombre
+
+  // Method to search for pokemon by name
 
   searchPokemon() {
     this.pokemonSearch
@@ -78,7 +88,9 @@ export class SearchPokemonComponent implements OnInit {
       });
   }
 
-  // Metodo para enviar abrir formulario de agregar pokemon
+  // Metodo de abrir formulario para agregar pokemon
+
+  // Method to open form to add pokemon
 
   onAddPokemon(event: any) {
     this.onShowPokemon.emit({ showAddPokemon: true });

@@ -52,6 +52,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
 
   // Metodo que inicializa el formulario
 
+  // Method that initializes the form
+
   private formPokemon(): void {
     this.pokemonForm = this.fb.group({
       id: [],
@@ -66,6 +68,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
   }
 
   // Metodo para detectar los cambios de los Input
+
+  // method to detect changes in the Input
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['onPokemon']?.currentValue) {
@@ -97,6 +101,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
 
   // Metodo para controlar el rango del slider de ataque pokemon
 
+  // Method to control the range of the attack slider pokemon
+
   attackPokemon(event?: any, attack?: any) {
     const value = event?.target?.value;
     this.valueAttack = value ? value : attack;
@@ -115,6 +121,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
 
   // Metodo para controlar el rango del slider de la defensa pokemon
 
+  // Method to control the range of the defense slider pokemon
+
   defensePokemon(event?: any, defense?: any) {
     const value = event?.target?.value;
     this.valuedefense = value ? value : defense;
@@ -132,6 +140,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
   }
 
   // Metodo para agregar y editar pokemon
+
+  // Method to add and edit pokemon
 
   onCreatePokemon() {
     const data = this.pokemonForm.getRawValue();
@@ -170,6 +180,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
 
   // Metodo para deshabilitar o habilitar el boton de guardar
 
+  // Method to disable or enable the save button
+
   validFormPoke() {
     if (
       this.pokemonForm.get('name')?.value !== '' &&
@@ -184,6 +196,8 @@ export class AddPokemonComponent implements OnInit, OnChanges {
   }
 
   // Metodo para cerrar y limpiar campo del formulario.
+
+  // Method to close and clear form field.
 
   closePokemon() {
     this.showAddPokemon = false;
