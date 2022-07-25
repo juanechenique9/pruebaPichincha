@@ -102,4 +102,18 @@ describe('AddPokemonComponent', () => {
     expect(component).toBeDefined();
   });
 
+  it('should defensePokemon', () => {
+    const value = 50
+    const value2 = 30
+    component.defensePokemon(value, value2);
+    expect(component).toBeDefined();
+  })
+
+  it('should attackPokemon', () => {
+    const value = 45
+    const value2 = 11
+    component.attackPokemon(value, value2);
+    expect(component).toBeDefined();
+  })
+
 });

@@ -98,7 +98,7 @@ export class AddPokemonComponent implements OnInit, OnChanges {
   // Metodo para controlar el rango del slider de ataque pokemon
 
   attackPokemon(event?: any, attack?: any) {
-    const value = event?.target.value;
+    const value = event?.target?.value;
     this.valueAttack = value ? value : attack;
     let result =
       ((value ? value : attack - this.MIN) / (this.MAX - this.MIN)) * 100;
@@ -116,7 +116,7 @@ export class AddPokemonComponent implements OnInit, OnChanges {
   // Metodo para controlar el rango del slider de la defensa pokemon
 
   defensePokemon(event?: any, defense?: any) {
-    const value = event?.target.value;
+    const value = event?.target?.value;
     this.valuedefense = value ? value : defense;
     let result =
       ((value ? value : defense - this.MIN) / (this.MAX - this.MIN)) * 100;
