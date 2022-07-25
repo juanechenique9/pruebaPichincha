@@ -95,25 +95,56 @@ describe('AddPokemonComponent', () => {
       },
     };
 
-    component.validFormPoke();
-
     component.ngOnChanges(changes);
-
     expect(component).toBeDefined();
   });
 
   it('should defensePokemon', () => {
-    const value = 50
-    const value2 = 30
+    const value = 50;
+    const value2 = 30;
     component.defensePokemon(value, value2);
     expect(component).toBeDefined();
-  })
+  });
 
   it('should attackPokemon', () => {
-    const value = 45
-    const value2 = 11
+    const value = 45;
+    const value2 = 11;
     component.attackPokemon(value, value2);
     expect(component).toBeDefined();
-  })
+  });
 
+  it('should be validFormPoke', () => {
+    let changes: any = {
+      dataPokemon: {
+        id: 1131,
+        name: 'Charmeleon 242',
+        image:
+          'https://assets.pokemon.com/assets/cms2/img/pokedex/full/005.png',
+        attack: 30,
+        defense: 80,
+        hp: 1000,
+        type: 'n/a',
+        id_author: 1,
+      },
+
+      onPokemon: {
+        currentValue: 1,
+      },
+    };
+
+    component.ngOnChanges(changes);
+
+    const control1 = component.pokemonForm.controls['name'];
+    control1.setValue('charizar');
+    const control2 = component.pokemonForm.controls['image'];
+    control2.setValue('imagen');
+    const control3 = component.pokemonForm.controls['attack'];
+    control3.setValue('51');
+    const control4 = component.pokemonForm.controls['defense'];
+    control4.setValue('14');
+
+    component.validFormPoke();
+
+    expect(component).toBeDefined;
+  });
 });
