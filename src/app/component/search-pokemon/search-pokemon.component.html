@@ -1,0 +1,45 @@
+<span class="title-pokemon">Listado de Pokemon</span>
+<form [formGroup]="pokemonSearch">
+<div class="search-pokemon">
+    <div>
+      <input
+        class="search-pokemon-primary"
+        type="text"
+        placeholder="Buscar"
+        aria-label="Search"
+        formControlName="nameSearch"
+      />
+  </div>
+  <button class="add-pokemon" (click)="onAddPokemon(true)">
+    <i class="material-icons">add</i>
+    <span class="add-text-pokemon">Nuevo</span>
+  </button>
+</div>
+<div class="table-pokemon">
+    <table class="table">
+            <tr>
+              <td><span class="title-head-pokemon">Nombre</span></td>
+              <td><span class="title-head-pokemon">Imagen</span></td>
+              <td><span class="title-head-pokemon">Ataque</span></td>
+              <td><span class="title-head-pokemon">Defensa</span></td>
+              <td><span class="title-head-pokemon-action">Acciones</span></td>
+            </tr>
+          <tr *ngFor="let pokemon of listPokemon">
+            <td><span class="text-pokemon">{{pokemon.name}}</span></td>
+            <td class="pokemon-center"><img class="img-pokemon" [src]="pokemon.image"/></td>
+            <td><span class="text-pokemon">{{pokemon.attack}}</span></td>
+            <td><span class="text-pokemon">{{pokemon.defense}}</span></td>
+            <td>
+                <div class="action-pokemon">
+                <span class="material-symbols-outlined" (click)="onUpdatePokemon(pokemon)"> 
+                        border_color
+                </span>
+                <span class="material-symbols-outlined" (click)="onDeletePokemon(pokemon)">
+                       delete
+            </span>
+        </div>
+            </td>
+          </tr>
+    </table>
+</div>
+</form>

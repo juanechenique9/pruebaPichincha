@@ -1,0 +1,93 @@
+<div class="container-add-pokemon" *ngIf="showAddPokemon">
+  <div class="new-add-pokemon">
+    <span>Nuevo Pokemon</span>
+  </div>
+  <form [formGroup]="pokemonForm">
+    <div class="grid-container">
+      <div class="grid-container1">
+        <div class="grid-item">
+          <span class="text-add-pokemon">Nombre:</span>
+        </div>
+        <div class="grid-item">
+          <input
+            class="add-pokemon"
+            type="text"
+            aria-label="Search"
+            formControlName="name"
+          />
+        </div>
+      </div>
+      <div class="grid-container2">
+        <div class="grid-item">
+          <span class="text-add-pokemon">Ataque:</span>
+        </div>
+        <div class="grid-item">
+          <div class="pokemon-range">
+            <div class="field">
+              <div class="text-add-pokemon">
+                {{ valueAttack }}
+              </div>
+              <input
+                #attack
+                id="slider-pokemon"
+                [min]="MIN"
+                [max]="MAX"
+                type="range"
+                formControlName="attack"
+                (input)="attackPokemon($event)"
+              />
+              <div class="text-add-pokemon">100</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-container1">
+        <div class="grid-item">
+          &nbsp;<span class="text-add-pokemon">Imagen:</span>
+        </div>
+        <div class="grid-item">
+          <input
+            class="add-pokemon"
+            type="text"
+            aria-label="Search"
+            formControlName="image"
+          />
+        </div>
+      </div>
+      <div class="grid-container2">
+        <div class="grid-item">
+          <span class="text-add-pokemon">Defensa:</span>
+        </div>
+        <div class="grid-item">
+          <div class="field-range-pokemon">
+            <div class="text-add-pokemon">
+              {{ valuedefense }}
+            </div>
+            <input
+              #defense
+              id="slider-pokemon"
+              [min]="MIN"
+              [max]="MAX"
+              type="range"
+              formControlName="defense"
+              (input)="defensePokemon($event)"
+            />
+            <div class="text-add-pokemon">100</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="save-pokemon">
+      <button [ngClass] = "validFormPokemon === true? 'add-pokemon-secondary' : 'disable-add-pokemon' "  class="add-pokemon-secondary"
+      [disabled]="!validFormPokemon"
+       (click)="onCreatePokemon()">
+        <i class="material-icons">save</i>
+        <span class="add-text-pokemon">Guardar</span>
+      </button>
+      <button class="close-pokemon" (click)="closePokemon()">
+        <i class="material-icons">close</i>
+        <span class="add-text-pokemon">Cancelar</span>
+      </button>
+    </div>
+  </form>
+</div>

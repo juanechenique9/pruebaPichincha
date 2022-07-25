@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+.header-principal{
+    background-color: slategray;
+    height: 50px;
+    width: 100%;
+    padding-right: 16px;
+    margin: -8px;
+}
+
+body{
+    background-color: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+}
+
